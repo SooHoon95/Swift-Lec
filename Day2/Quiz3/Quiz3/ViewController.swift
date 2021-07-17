@@ -18,8 +18,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        imgTitle.text = imageName[numImage]
-        imgView.image = UIImage(named: imageName[numImage])
+       displayImage(numImage: numImage)
+        // 이런거
     }
     
     @IBAction func btnPrev(_ sender: UIButton) {
@@ -28,8 +28,8 @@ class ViewController: UIViewController {
         if numImage < 0 {
             numImage = imageName.count - 1
         }
-        imgView.image = UIImage(named: imageName[numImage])
-        imgTitle.text = imageName[numImage]
+        displayImage(numImage: numImage)
+        // 이런거
     }
     
     @IBAction func btnNext(_ sender: UIButton) {
@@ -40,9 +40,15 @@ class ViewController: UIViewController {
             imgTitle.text = imageName[0]
             numImage = 0
         }
+        displayImage(numImage: numImage) // 이렇게 쓰기 싫고 파라미터 너힉 싫으면 함수에 _ 써주면 된다.
+        //이런거 다 함수로 만드는 게 좋음 안그러면 저런 내용들 다 메모리에 올라가서 퍼포먼스 좋아짐
+    }
+    
+    func displayImage(numImage: Int){
         imgView.image = UIImage(named: imageName[numImage])
         imgTitle.text = imageName[numImage]
     }
     
-}
+    
+} // ViewController
 
