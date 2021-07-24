@@ -7,7 +7,7 @@
 
 import UIKit
 
-// 변수 선언을 Class 정의 전에 한다.
+// 변수 선언을 Class 정의 전에 한다. // class 밖에 있으면 프로젝트에서 공통적으로 사용할 수 있다. >> 즉, 프로젝트가 관리해주는 변수이다.
 var items = ["책 구매", "철수와 약속", "스터디 준비하기"]
 var itemsImageFile = ["cart.png", "pencil.png","clock.png"]
 
@@ -29,6 +29,10 @@ class TableViewController: UITableViewController {
         
         // Edit 버튼을 만들고 삭제기능 추가하기, 왼쪽으로 배치
         self.navigationItem.leftBarButtonItem = self .editButtonItem
+    } // ViewdidLoad
+    
+    override func viewWillAppear(_ animated: Bool) { // 이걸 써주면 화면이 뜰때 1번 ViewdidLoad >> 2번 ViewWillAppear 까지 실행된다.
+        tvListView.reloadData() // reload 쓰게 되면 Table관련 된 메소드들을 다시 돌려준다. 즉 화면 재구성. not 데이터베이스 재구성
     }
 
     // MARK: - Table view data source
@@ -86,12 +90,22 @@ class TableViewController: UITableViewController {
     }
     
 
-    /*
+    // 목록 순서 바꾸기
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        // 이동할 item의 위치
+        let itemToMove = items[fromIndexPath.row]
+        let itemImageToMove = itemsImageFile[fromIndexPath.row]
+        
+        // 이동할 item을 삭제
+        items.remove(at: fromIndexPath.row)
+        itemsImageFile.remove(at: fromIndexPath.row)
+        
+        // 해당 위치로 십입
+        items.insert(itemToMove, at: to.row)
+        itemsImageFile.insert(itemImageToMove, at: to.row)
     }
-    */
+    
 
     /*
     // Override to support conditional rearranging of the table view.
@@ -101,14 +115,21 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sgDetail"{
+            let cell = sender as! UITableViewCell // 이타입으로 바꿔서 가져올 것이닫.
+            let indexPath = self.tvListView.indexPath(for: cell)
+            
+            let detailView = segue.destination as! DetailViewController
+            detailView.receiveItems(items[indexPath!.row])
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
+}
 }//ViewController

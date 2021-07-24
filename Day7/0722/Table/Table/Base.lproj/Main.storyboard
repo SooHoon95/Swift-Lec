@@ -25,7 +25,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="i6J-iz-ddZ" kind="show" identifier="segueDetail" id="Ea0-IR-fNr"/>
+                                    <segue destination="i6J-iz-ddZ" kind="show" identifier="sgDetail" id="Ea0-IR-fNr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -69,6 +69,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="DetailView" id="loT-36-mHc"/>
+                    <connections>
+                        <outlet property="lblItem" destination="wnf-zi-1rK" id="2GG-ud-Oau"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ha-dC-Tx3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -93,12 +96,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="ADD"/>
+                                <connections>
+                                    <action selector="btnAddItem:" destination="UmV-JT-tMW" eventType="touchUpInside" id="2y3-Rv-Zh5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LNs-NH-Rr2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="AddView" id="s5X-7I-YLL"/>
+                    <connections>
+                        <outlet property="tfAddItem" destination="7Tt-Ll-pul" id="UtM-M1-Ogx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Nn-we-Xt7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
