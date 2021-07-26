@@ -9,7 +9,7 @@ import Foundation
 
 //Optional
 
-var str1: String
+var str1: String!
 str1 = "Apple"
 str1 = "Google"
 //str1 = nil // nil은 optional변수에만 들어간다. String에는 못 들어감.
